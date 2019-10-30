@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Scrolling_Loneliness",
+  "permissions": [
+          "storage"
+          // "webRequest",
+           // "webRequestBlocking"],
+         ],
+
+   "version": "0.1",
+   "css": "style.css",
+
+  //  "background": {
+  //   "scripts": ["background.js"],
+  //   "persistent": true
+  // },
+
+  "externally_connectable": {
+  "matches": ["https://elenaleegold.github.io/ritual-site/afterCare.html"]
+},
+
+  "content_scripts": [{
+    "matches": [
+      "<all_urls>"
+    ],
+    // "exclude_matches": ["https://elenaleegold.github.io/ritual-site/"],
+    "js": ["p5.js", "p5.dom.js", "jquery-3.2.1.min.js", "Scrolling_Loneliness.js"]
+  },
+{
+  "matches": ["https://elenaleegold.github.io/ritual-site/afterCare.html"],
+   "js": ["p5.js", "p5.dom.js", "jquery-3.2.1.min.js"]
+
+}
+
+]
+}
