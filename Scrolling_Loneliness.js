@@ -9,7 +9,7 @@ let r,g,b;
   let w = document.body.clientHeight;
 
 function preload() {
-  body_fill = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body_fill.png');
+  body_fill = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/body_fill.png');
   body = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body.png');
   sad1_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad1_mouth.png');
   sad2_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad2_mouth.png');
@@ -37,7 +37,7 @@ function setup() {
 
 
 function draw() {
-  background(r,g,b);
+  background(r,g,b,0);
   fill(pos,255,pos);
   if(pos > 256){
     pos = 255;
@@ -51,7 +51,9 @@ function draw() {
       r-=2;
       b+=2;
   }
+  tint(r,g,b);
   image(body_fill, 0, height-(imgHeight));
+  tint(0,0,0);
   image(body, 0, height-(imgHeight));
        print(state);
   if(b < 300 && b >= 175){
