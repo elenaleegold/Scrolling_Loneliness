@@ -1,5 +1,5 @@
 let pos;
-let body, sad1_mouth, sad1_eyes, sad2_mouth, sad2_eyes, normal_eyes, normal_mouth, happy1_eyes, happy1_mouth, happy2_eyes, happy2_mouth;
+let body_fill,body, sad1_mouth, sad1_eyes, sad2_mouth, sad2_eyes, normal_eyes, normal_mouth, happy1_eyes, happy1_mouth, happy2_eyes, happy2_mouth;
 
 let imgHeight, imgWidth;
 let state;
@@ -9,6 +9,7 @@ let r,g,b;
   let w = document.body.clientHeight;
 
 function preload() {
+  body_fill = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body_fill.png');
   body = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body.png');
   sad1_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad1_mouth.png');
   sad2_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad2_mouth.png');
