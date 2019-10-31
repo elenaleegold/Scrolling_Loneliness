@@ -5,30 +5,33 @@ let imgHeight, imgWidth;
 let state;
 let r,g,b;
 
+  let h = document.body.clientHeight;
+  let w = document.body.clientHeight;
+
 function preload() {
-  body = loadImage('images/body.png');
-  sad1_mouth = loadImage('images/sad1_mouth.png');
-  sad2_mouth = loadImage('images/sad2_mouth.png');
-  normal_mouth = loadImage('images/normal_mouth.png');
-  happy1_mouth = loadImage('images/happy1_mouth.png');
-  happy2_mouth = loadImage('images/happy1_mouth.png');
-  sad1_eyes = loadImage('images/sad1_eyes.png');
-  sad2_eyes = loadImage('images/sad2_eyes.png');
-  normal_eyes = loadImage('images/normal_eyes.png');
-  happy1_eyes = loadImage('images/happy1_eyes.png');
-  happy2_eyes = loadImage('images/happy1_eyes.png');
+  body = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body.png');
+  sad1_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad1_mouth.png');
+  sad2_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad2_mouth.png');
+  normal_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/normal_mouth.png');
+  happy1_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/happy1_mouth.png');
+  happy2_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/happy1_mouth.png');
+  sad1_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad1_eyes.png');
+  sad2_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad2_eyes.png');
+  normal_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/normal_eyes.png');
+  happy1_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/happy1_eyes.png');
+  happy2_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/happy1_eyes.png');
 }
 
 function setup() {
-pos = 0;
-var canvas = createCanvas(500, 500);
-canvas.parent('sketch-holder');
-state = "normal";
-imgHeight = body.height + 20;
-imgWidth = body.width + 20;
-r = 0;
-g = 100;
-b = 255;
+  pos = 0;
+  var canvas = createCanvas(500, h-100);
+  // canvas.parent('#sketch-holder');
+  state = "normal";
+  imgHeight = body.height + 20;
+  imgWidth = body.width + 20;
+  r = 0;
+  g = 100;
+  b = 255;
 }
 
 
@@ -47,19 +50,20 @@ function draw() {
       r-=2;
       b+=2;
   }
-  image(body, width-(imgWidth), height-(imgHeight));
+  image(body_fill, 0, height-(imgHeight));
+  image(body, 0, height-(imgHeight));
        print(state);
   if(b < 300 && b >= 175){
-    image(sad1_mouth, width-(imgWidth), height-(imgHeight));
-    image(sad2_eyes, width-(imgWidth), height-(imgHeight));
+    image(sad1_mouth, 0, height-(imgHeight));
+    image(sad2_eyes, 0, height-(imgHeight));
   }
   else if(b < 175 && b >= 145){
-    image(normal_mouth, width-(imgWidth), height-(imgHeight));
-    image(normal_eyes, width-(imgWidth), height-(imgHeight));
+    image(normal_mouth, 0, height-(imgHeight));
+    image(normal_eyes, 0, height-(imgHeight));
   }
   else if(b < 145 && b >= 95){
-    image(happy1_eyes, width-(imgWidth), height-(imgHeight));
-    image(happy1_mouth, width-(imgWidth), height-(imgHeight));
+    image(happy1_eyes, 0, height-(imgHeight));
+    image(happy1_mouth, 0, height-(imgHeight));
   }
   
   if(b < 100){
@@ -75,7 +79,6 @@ function draw() {
   
   print("red is " + r);
   print("blue is " + b);
-
 
 }
 
