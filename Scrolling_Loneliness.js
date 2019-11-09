@@ -1,14 +1,17 @@
+// var s = function ( sketch ){
+
 let pos;
 let body_fill,body, sad1_mouth, sad1_eyes, sad2_mouth, sad2_eyes, normal_eyes, normal_mouth, happy1_eyes, happy1_mouth, happy2_eyes, happy2_mouth;
 
 let imgHeight, imgWidth;
 let state;
 let r,g,b;
+let canvas;
 
-  let h = document.body.clientHeight;
-  let w = document.body.clientHeight;
+  // let h = document.body.clientHeight;
+  // let w = document.body.clientHeight;
 
-function preload() {
+function preload(){
   body_fill = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/body_fill.png');
   body = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/body.png');
   sad1_mouth = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/sad1_mouth.png');
@@ -23,10 +26,31 @@ function preload() {
   happy2_eyes = loadImage('https://raw.githubusercontent.com/elenaleegold/Scrolling_Loneliness/master/images/happy1_eyes.png');
 }
 
-function setup() {
+function setup(){
+
+  // jQuery('<div/>', {
+  // id: 'siteBox',
+  // title: 'div-border'
+  // }).appendTo('body');
+
+
+  // $('#siteBox').css("position", "fixed");
+
+  canvas = createCanvas(300, 500);
+    $('#defaultCanvas0').css("box-sizing", "border-box");
+    // $('#defaultCanvas0').css("height", "800px");
+    $('#defaultCanvas0').css("position", "fixed");
+    $('#defaultCanvas0').css("z-index", "10000");
+    $('#defaultCanvas0').css("margin", "0");
+    $('#defaultCanvas0').css("float", "left");
+    $('#defaultCanvas0').css("bottom","0px");
+    $('#defaultCanvas0').css("left","0px");
+
   pos = 0;
-  var canvas = createCanvas(500, h-100);
-  // canvas.parent('#sketch-holder');
+
+  // var canvas = 
+  // canvas.child('#siteBox');
+
   state = "normal";
   imgHeight = body.height + 20;
   imgWidth = body.width + 20;
@@ -36,7 +60,9 @@ function setup() {
 }
 
 
-function draw() {
+function draw(){
+  // console.log("here");
+  console.log( abs(checkScrollSpeed()) );
   background(r,g,b,0);
   fill(pos,255,pos);
   if(pos > 256){
@@ -45,17 +71,17 @@ function draw() {
   else if(pos < 0){
     pos = 0;
   }
-  rect(0, 0, 50, 50);
 
-  if(frameCount % 10 == 0){
+
+  if(frameCount % 50 == 0){
       r-=2;
       b+=2;
   }
-  tint(r,g,b);
+  tint(r,0,b);
   image(body_fill, 0, height-(imgHeight));
   tint(0,0,0);
   image(body, 0, height-(imgHeight));
-       print(state);
+       // print(state);
   if(b < 300 && b >= 175){
     image(sad1_mouth, 0, height-(imgHeight));
     image(sad2_eyes, 0, height-(imgHeight));
@@ -79,11 +105,9 @@ function draw() {
   if(r < 100){
     r = 100;
   }
-  
-  print("red is " + r);
-  print("blue is " + b);
 
 }
+
 
 
 function mouseWheel(event) {
@@ -94,3 +118,35 @@ function mouseWheel(event) {
   //uncomment to block page scrolling
   //return false;
 }
+
+// }
+
+var checkScrollSpeed = (function(settings){
+    settings = settings || {};
+
+    var lastPos, newPos, timer, delta, 
+        delay = settings.delay || 50; // in "ms" (higher means lower fidelity )
+
+    function clear() {
+      lastPos = null;
+      delta = 0;
+    }
+
+    clear();
+
+    return function(){
+      newPos = window.scrollY;
+      if ( lastPos != null ){ // && newPos < maxScroll 
+        delta = newPos -  lastPos;
+      }
+      lastPos = newPos;
+      clearTimeout(timer);
+      timer = setTimeout(clear, delay);
+      return delta;
+    };
+})();
+
+// listen to "scroll" event
+window.onscroll = function(){
+  // console.log( checkScrollSpeed() );
+};
