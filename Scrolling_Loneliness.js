@@ -78,33 +78,40 @@ function draw(){
       b+=2;
   }
   tint(r,0,b);
-  image(body_fill, 0, height-(imgHeight));
-  tint(0,0,0);
-  image(body, 0, height-(imgHeight));
-       // print(state);
-  if(b < 300 && b >= 175){
-    image(sad1_mouth, 0, height-(imgHeight));
-    image(sad2_eyes, 0, height-(imgHeight));
+  var speed = abs(checkScrollSpeed());
+  if(speed > 15){
+    b--;
   }
-  else if(b < 175 && b >= 145){
-    image(normal_mouth, 0, height-(imgHeight));
-    image(normal_eyes, 0, height-(imgHeight));
+  else if(speed < 15){
+    b+=50;
   }
-  else if(b < 145 && b >= 95){
-    image(happy1_eyes, 0, height-(imgHeight));
-    image(happy1_mouth, 0, height-(imgHeight));
-  }
+  image(body_fill, 2, height-(imgHeight)+2);
+  // tint(0,0,0);
+  // image(body, 0, height-(imgHeight));
+  //      // print(state);
+  // if(b < 300 && b >= 175){
+  //   image(sad1_mouth, 0, height-(imgHeight));
+  //   image(sad2_eyes, 0, height-(imgHeight));
+  // }
+  // else if(b < 175 && b >= 145){
+  //   image(normal_mouth, 0, height-(imgHeight));
+  //   image(normal_eyes, 0, height-(imgHeight));
+  // }
+  // else if(b < 145 && b >= 95){
+  //   image(happy1_eyes, 0, height-(imgHeight));
+  //   image(happy1_mouth, 0, height-(imgHeight));
+  // }
   
-  if(b < 100){
-    b = 100;
-  }
-  else if(b > 255){
-    b = 255;
-  }
+  // if(b < 100){
+  //   b = 100;
+  // }
+  // else if(b > 255){
+  //   b = 255;
+  // }
   
-  if(r < 100){
-    r = 100;
-  }
+  // if(r < 100){
+  //   r = 100;
+  // }
 
 }
 
