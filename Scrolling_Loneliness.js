@@ -62,7 +62,7 @@ function setup(){
 
 function draw(){
   // console.log("here");
-  console.log( abs(checkScrollSpeed()) );
+  // console.log( abs(checkScrollSpeed()) );
   background(r,g,b,0);
   fill(pos,255,pos);
   if(pos > 256){
@@ -72,20 +72,59 @@ function draw(){
     pos = 0;
   }
 
+  var pLength = document.documentElement.scrollHeight;
 
-  if(frameCount % 50 == 0){
-      r-=2;
-      b+=2;
-  }
-  tint(r,0,b);
+  // if(frameCount % 50 == 0){
+  //     if (b >= 255){
+  //       b = 255;
+  //     }
+  //     else{
+  //       b++;
+  //     }
+  // }
+
+  var docHeight = $(document).height();
+  var scrollTop = $(window).scrollTop();
+
+
+  var newB = map(scrollTop,0,docHeight, 255, 0);
+
   var speed = abs(checkScrollSpeed());
   if(speed > 15){
-    b--;
+    // b-=50;
   }
-  else if(speed < 15){
-    b+=50;
+  else if(speed < 15 && speed !=0){
+    // b--;
   }
+  console.log(newB);
+  tint(newB,255,255);
   image(body_fill, 2, height-(imgHeight)+2);
+  image(body, 2, height-(imgHeight)+2);
+
+
+
+  if(newB >= 0 && newB <= 51){
+    image(sad2_eyes, 0, height-(imgHeight));
+    image(sad2_mouth, 0, height-(imgHeight));
+  }
+  else if(newB >= 52 && newB <= 102){
+    image(sad1_eyes, 0, height-(imgHeight));
+    image(sad1_mouth, 0, height-(imgHeight));
+  }
+  else if(newB >= 103 && newB <= 153){
+    image(normal_eyes, 0, height-(imgHeight));
+    image(normal_mouth, 0, height-(imgHeight));
+  }
+  else if(newB >= 154 && newB <= 204){
+    image(happy1_eyes, 0, height-(imgHeight));
+    image(happy1_mouth, 0, height-(imgHeight));
+  }
+  else if(newB >= 205 && newB <= 255){
+    image(happy2_eyes, 0, height-(imgHeight));
+    image(happy2_mouth, 0, height-(imgHeight));
+  }
+
+
   // tint(0,0,0);
   // image(body, 0, height-(imgHeight));
   //      // print(state);
