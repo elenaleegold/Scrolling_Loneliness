@@ -99,14 +99,21 @@ function draw(){
   }
   console.log(newB);
   tint(newB,255,255);
-  image(body_fill, 2, height-(imgHeight)+2);
-  image(body, 2, height-(imgHeight)+2);
+    var randShake = random(3);
+  if(newB >= 0 && newB <= 51){
+  image(body_fill, 2 + randShake, height-(imgHeight)+2 + randShake);
+  }
+  else{
+    image(body_fill, 2, height-(imgHeight)+2);
+   // image(body, 2, height-(imgHeight)+2);
+  }
 
   noTint();
 
+
   if(newB >= 0 && newB <= 51){
-    image(sad2_eyes, 0, height-(imgHeight));
-    image(sad2_mouth, 0, height-(imgHeight));
+    image(sad2_eyes, 0 + randShake, height-(imgHeight) + randShake);
+    image(sad2_mouth, 0 + randShake, height-(imgHeight) + randShake);
   }
   else if(newB >= 52 && newB <= 102){
     image(sad1_eyes, 0, height-(imgHeight));
