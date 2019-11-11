@@ -36,7 +36,7 @@ function setup(){
 
   // $('#siteBox').css("position", "fixed");
 
-  canvas = createCanvas(300, 500);
+  canvas = createCanvas(700, 700);
     $('#defaultCanvas0').css("box-sizing", "border-box");
     // $('#defaultCanvas0').css("height", "800px");
     $('#defaultCanvas0').css("position", "fixed");
@@ -63,6 +63,7 @@ function setup(){
 function draw(){
   // console.log("here");
   // console.log( abs(checkScrollSpeed()) );
+  clear();
   background(r,g,b,0);
   fill(pos,255,pos);
   if(pos > 256){
@@ -101,7 +102,7 @@ function draw(){
   image(body_fill, 2, height-(imgHeight)+2);
   image(body, 2, height-(imgHeight)+2);
 
-
+  noTint();
 
   if(newB >= 0 && newB <= 51){
     image(sad2_eyes, 0, height-(imgHeight));
